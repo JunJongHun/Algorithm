@@ -9,7 +9,8 @@ input = input
 
 // console.log(input);
 
-console.log(sloution(input[0], input[1], input[2], input[3]));
+let output = sloution(input[0], input[1], input[2], input[3]);
+console.log(output);
 
 function sloution(x, y, w, h) {
   let answer = Math.min(x, y, w - x, h - y);
