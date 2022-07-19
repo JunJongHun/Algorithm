@@ -16,8 +16,6 @@ sloution(input); // solution에 파라미터 넣어주기
 // 문제 로직 구현
 
 function sloution(arr) {
-  let answer;
-
   arr.sort((a, b) => a - b);
   for (const i of arr) {
     console.log(i);
