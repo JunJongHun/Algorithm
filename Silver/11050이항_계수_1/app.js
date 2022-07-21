@@ -19,7 +19,7 @@ console.log(output); //출력값
 function sloution(a, b) {
   let answer;
   let dp = Array.from(Array(a + 1), () => new Array(b + 1).fill(0));
-  console.log(dp);
+  // console.log(dp);
 
   function DFS(N, K) {
     if (dp[N][K] !== 0) return dp[N][K];
@@ -41,7 +41,7 @@ function sloution(a, b) {
     }
   }
   answer = DFS(a, b);
-  console.log(dp);
+  // console.log(dp);
 
   return answer;
 }
