@@ -1,35 +1,27 @@
-let id_list = ["muzi", "frodo", "apeach", "neo"];
-let report = [
-  "muzi frodo",
-  "apeach frodo",
-  "frodo neo",
-  "muzi neo",
-  "apeach muzi",
-];
-let k = 2;
+let answer = 0;
 
-let answer = [];
-let user_map = new Map();
-let user_answer_map = new Map();
+for (let i = 13; i <= 17; i++) {
+  let m = new Map();
+  let num = i;
+  let sum = 0;
+  for (let j = 2; j <= num; j++) {
+    if (num === 1) break;
 
-for (const user of id_list) {
-  user_map.set(user, 0);
-  user_answer_map.set(user, 0);
-}
-
-for (let reported_user of new Set(report)) {
-  reported_user = reported_user.split(" ")[1];
-  user_map.set(reported_user, user_map.get(reported_user) + 1);
-}
-
-for (const user of report) {
-  let [key, value] = user.split(" ");
-  if (user_map.get(value) >= k) {
-    user_answer_map.set(key, user_answer_map.get(key) + 1);
+    if (num % j === 0) {
+      if (m.has(j)) m.set(j, m.get(j) + 1);
+      else m.set(j, 1);
+      num = num / j;
+      j--;
+    }
   }
+
+  for (let k of m.values()) {
+    k++;
+    sum += k;
+  }
+
+  if (sum % 2 === 0) answer += i;
+  else answer -= i;
 }
 
-for (const i of user_answer_map.values()) {
-  answer.push(i);
-}
 console.log(answer);
