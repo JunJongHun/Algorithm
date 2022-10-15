@@ -26,14 +26,12 @@ function repeat(n, y, x) {
   if (count === n * n) WB[stdNumber]++;
   else {
     n = n / 2;
-    for (let i = 0; i < 2; i++) {
-      for (let j = 0; j < 2; j++) {
-        repeat(n, y * i, x * j);
-      }
-    }
+    repeat(n, y, x);
+    repeat(n, y + n, x);
+    repeat(n, y, x + n);
+    repeat(n, y + n, x + n);
   }
 }
-
 //전체 확인
 for (let i = 0; i < n; i++) {
   for (let j = 0; j < n; j++) {
