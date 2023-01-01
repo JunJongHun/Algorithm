@@ -1,5 +1,3 @@
-//
-
 function solution(genres, plays) {
   let answer = [];
 
