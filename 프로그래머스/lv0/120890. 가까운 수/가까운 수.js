@@ -15,8 +15,5 @@ function solution(array, n) {
         }
     }
     
-  
-    
-    
     return array[minNumIndex];
 }
