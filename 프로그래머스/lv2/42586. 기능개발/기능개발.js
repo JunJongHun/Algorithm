@@ -1,22 +1,23 @@
-function solution(progresses, speeds) {
-  var answer = [];
-  let queue = [];
-  let count = 0;
-  let day = 0;
+// 수정 전 코드
+function solution(p, s) {
+	let answer = [];
+	let arr = [];
+	
+	for (i=0; i < p.length; i++ ) arr.push(Math.ceil((100 - p[i])/s[i]))
 
-  while (progresses.length > 0) {
-    if (progresses[0] + day * speeds[0] >= 100) {
-      progresses.shift();
-      speeds.shift();
-      count++;
-    } else {
-      if (count > 0) {
-        answer.push(count);
-        count = 0;
-      }
-      day++;
-    }
-  }
-  answer.push(count);
-  return answer;
+	let max = arr[0];
+	let data = 0;
+
+	for (t = 0; t<arr.length; t++) {
+		if (max < arr[t]) {
+			max = arr[t]
+			answer.push(data)
+			data = 1
+		} else {
+			data++
+		}
+
+		if(t === arr.length-1) answer.push(data)
+	}
+	return answer;
 }
