@@ -12,7 +12,7 @@ function solution(n, slicer, num_list) {
             return num_list.slice(a,b+1);
             break;
         case 4:
-            return num_list.slice(a,b+1).filter((_,i)=>(i+1)%c);
+            return num_list.slice(a,b+1).filter((_,i)=>i%c===0);
             break;
     }
     
