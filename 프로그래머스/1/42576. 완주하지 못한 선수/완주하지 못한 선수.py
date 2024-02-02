@@ -1,22 +1,12 @@
-def solution(participant, completion):
-    memo = {}
-    
-    for i in completion:
-        if i in memo:
-            memo[i]+=1
-        else:
-            memo[i]=1
-            
-    for i in participant:
-        if i in memo:
-            if memo[i] == 0:
-                return i
-            else:
-                memo[i]-=1
-        else:
-            return i
+from collections import Counter
 
-    return 0
+def solution(participant, completion):
+    partCounter = Counter(participant)
+    comCounter = Counter(completion)
+    
+    result = list((partCounter-comCounter).keys())
+    
+    return result[0]
     
 
     
