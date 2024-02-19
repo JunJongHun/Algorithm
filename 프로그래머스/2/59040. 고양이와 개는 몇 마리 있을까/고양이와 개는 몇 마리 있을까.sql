@@ -1,6 +1,4 @@
--- 코드를 입력하세요
-SELECT ANIMAL_TYPE, COUNT(ANIMAL_TYPE) AS COUNT
-FROM ANIMAL_INS
-WHERE ANIMAL_TYPE IN ('Cat','Dog')
-GROUP BY ANIMAL_TYPE
-ORDER BY ANIMAL_TYPE ASC
+select ANIMAL_TYPE, count(*) as count
+from animal_ins
+group by animal_type
+order by animal_type asc
