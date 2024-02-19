@@ -1,15 +1,9 @@
--- 코드를 입력하세요
-SELECT
-    U.USER_ID,
-    U.NICKNAME,
-    CONCAT(CITY,' ',U.STREET_ADDRESS1,' ',U.STREET_ADDRESS2) AS ADDRESS,
-    CONCAT(SUBSTR(U.TLNO,1,3),'-',SUBSTR(U.TLNO,4,4),'-',SUBSTR(U.TLNO,8,4)) AS TLNO
-FROM
-    USED_GOODS_BOARD AS B
-JOIN
-    USED_GOODS_USER AS U
-ON
-    B.WRITER_ID = U.USER_ID
-GROUP BY U.USER_ID
-HAVING COUNT(U.USER_ID) >= 3
-ORDER BY U.USER_ID DESC
+select USER_ID,NICKNAME,
+concat(CITY,' ',STREET_ADDRESS1,' ',STREET_ADDRESS2) as '전체주소',
+concat(substring(TLNO,1,3),'-',substring(TLNO,4,4),'-',substring(TLNO,8,4))
+from USED_GOODS_BOARD as a
+join USED_GOODS_USER as b
+on a.writer_id = b.user_id
+group by a.writer_id
+having count(a.writer_id) >=3
+order by user_id desc
