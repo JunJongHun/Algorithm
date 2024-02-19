@@ -1,5 +1,5 @@
 -- 코드를 입력하세요
-SELECT TRUNCATE(PRICE,-4) AS PRICE_GROUP, COUNT(PRICE) AS PRODUCTS
-FROM PRODUCT
-GROUP BY TRUNCATE(PRICE,-4)
-ORDER BY TRUNCATE(PRICE,-4)
+SELECT floor(price/10000)*10000 as price_group,count(*)
+from PRODUCT
+group by price_group
+order by price_group asc
