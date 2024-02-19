@@ -1,9 +1,8 @@
-select a.author_id, a.author_name, b.category, sum(s.sales*b.price)
-from book as b
-join book_sales as s
-on b.book_id = s.book_id
-join author as a
-on b.author_id = a.author_id
-where s.sales_date between '2022-01-01' and '2022-01-31'
-group by a.author_name, b.category
-order by a.author_id asc, b.category desc
+select a.AUTHOR_ID,c.AUTHOR_NAME,a.	CATEGORY, sum(a.price*b.sales) as 	TOTAL_SALES
+from book as a
+join book_sales as b
+join author as c
+on a.book_id = b.book_id and a.author_id = c.author_id
+where substring(b.sales_date,1,7) = '2022-01'
+group by a.category, a.author_id
+order by a.author_id asc, a.category desc
