@@ -1,7 +1,11 @@
-select a.flavor
-from first_half as a
-join july as b
-on a.flavor = b.flavor
-group by a.flavor
-order by sum(b.total_order) + a.total_order desc
+select FLAVOR
+from (
+select *
+from FIRST_HALF
+union
+select *
+from july
+) as t
+group by flavor
+order by sum(total_order) desc
 limit 3
