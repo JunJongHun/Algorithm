@@ -4,28 +4,28 @@ import heapq
 def solution(N, road, K):
     answer = 0
     
-    costs = {}
     graph = defaultdict(list)
-    heap = []
+    pq = []
+    cost = {}
     
     for a,b,c in road:
-        graph[a].append((c,b))
-        graph[b].append((c,a))
-        
-    heapq.heappush(heap,(0,1))
-    
-    while heap:
-        cur_v,cur_node = heapq.heappop(heap)
-        
-        if cur_node not in costs:
-            costs[cur_node] = cur_v
+            graph[a].append((c,b))
+            graph[b].append((c,a))
             
-            for v,next_node in graph[cur_node]:
-                next_v = cur_v+v
-                heapq.heappush(heap,(next_v,next_node))
+    heapq.heappush(pq,(0,1))
     
-    for i in costs.values():
-        if i <= K:
+    while pq:
+        curr_val,curr_pos = heapq.heappop(pq)
+        
+        if curr_pos not in cost:
+            cost[curr_pos] = curr_val
+            
+            for v,next in graph[curr_pos]:
+                heapq.heappush(pq,(curr_val+v,next))
+    
+    for val in cost.values():
+        if val <= K:
             answer+=1
+    
 
     return answer
