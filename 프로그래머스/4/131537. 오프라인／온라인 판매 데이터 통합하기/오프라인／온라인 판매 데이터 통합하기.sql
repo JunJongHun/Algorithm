@@ -1,12 +1,11 @@
--- 코드를 입력하세요
-SELECT DATE_FORMAT(SALES_DATE,'%Y-%m-%d') AS SALES_DATE,PRODUCT_ID, USER_ID, SALES_AMOUNT
-FROM ONLINE_SALE 
-WHERE SUBSTR(SALES_DATE,1,7) = '2022-03'
- 
-UNION ALL
-
-SELECT DATE_FORMAT(SALES_DATE,'%Y-%m-%d') AS SALES_DATE,PRODUCT_ID, NULL AS USER_ID, SALES_AMOUNT
-FROM OFFLINE_SALE 
-WHERE SUBSTR(SALES_DATE,1,7) = '2022-03'
-
-ORDER BY SALES_DATE ASC, PRODUCT_ID ASC, USER_ID ASC
+(select substring(SALES_DATE,1,10)as a,product_id,user_id,sales_amount
+from online_sale
+where sales_date like '2022-03%'
+ )
+union
+ (
+select substring(SALES_DATE,1,10) as a,product_id,NULL as user_id,sales_amount
+from offline_sale
+where sales_date like '2022-03%'
+)
+order by a asc, product_id asc, user_id asc
