@@ -1,4 +1,3 @@
--- 코드를 입력하세요
-SELECT ANIMAL_TYPE, IFNULL(NAME,'No name') AS NAME, SEX_UPON_INTAKE
-FROM ANIMAL_INS
-ORDER BY ANIMAL_ID ASC
+select ANIMAL_TYPE	,if(name is null,'No name',name) as NAME	,SEX_UPON_INTAKE
+from animal_ins
+order by animal_id asc
