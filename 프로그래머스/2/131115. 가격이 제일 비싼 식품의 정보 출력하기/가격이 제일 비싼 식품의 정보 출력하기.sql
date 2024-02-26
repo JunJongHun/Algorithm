@@ -1,12 +1,11 @@
--- 코드를 입력하세요
-SELECT *
-FROM FOOD_PRODUCT
-WHERE PRICE = (SELECT MAX(PRICE)
-              FROM FOOD_PRODUCT)
+# select *
+# from FOOD_PRODUCT
+# where PRODUCT_ID = (select PRODUCT_ID
+#                     from FOOD_PRODUCT
+#                     group by )
 
 
--- 다른 방법 --
-# SELECT *
-# FROM FOOD_PRODUCT
-# ORDER BY PRICE DESC
-# LIMIT 1
+select PRODUCT_ID,	PRODUCT_NAME,	PRODUCT_CD,	CATEGORY,	PRICE
+from FOOD_PRODUCT
+order by price desc
+limit 1
