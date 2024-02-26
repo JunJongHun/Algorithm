@@ -1,3 +1,4 @@
--- 코드를 입력하세요
-SELECT MAX(DATETIME)
-FROM ANIMAL_INS
+select DATETIME
+from ANIMAL_INS
+order by datetime desc
+limit 1
