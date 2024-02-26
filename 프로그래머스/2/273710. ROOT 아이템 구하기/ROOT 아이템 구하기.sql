@@ -1,6 +1,8 @@
-select item_id,item_name
-from ITEM_INFO as a 
-left join ITEM_TREE as b
-using (item_id)
+select ITEM_ID,ITEM_NAME
+from ITEM_INFO
+where ITEM_ID in (
+select ITEM_ID
+from ITEM_TREE
 where parent_item_id is null
+    )
 order by 1 asc
