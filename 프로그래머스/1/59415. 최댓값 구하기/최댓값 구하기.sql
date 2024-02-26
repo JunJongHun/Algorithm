@@ -1,4 +1,2 @@
-select DATETIME
+select max(DATETIME)
 from ANIMAL_INS
-order by datetime desc
-limit 1
