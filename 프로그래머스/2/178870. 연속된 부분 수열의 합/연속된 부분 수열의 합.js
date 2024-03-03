@@ -6,7 +6,6 @@ function solution(sequence, k) {
     let sum = sequence[end];
     
     while(start <= end && end < sequence.length){
-        
  
         if(sum === k){
             if(answer[1]-answer[0] > end-start){
@@ -24,8 +23,6 @@ function solution(sequence, k) {
             start+=1
            
         }
-        
-        if(sequence[start] > k) break;
         
     }
     
