@@ -1,5 +1,11 @@
+with t as (
+    select customer_number, count(customer_number) as cnt
+    from Orders
+    group by customer_number
+)
+
 select customer_number
-from Orders
-group by customer_number
-order by count(customer_number) desc
-limit 1
+from t
+where cnt = (
+    select max(cnt) from t
+) 
