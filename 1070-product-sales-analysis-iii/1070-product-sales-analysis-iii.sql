@@ -1,6 +1,7 @@
-select a.product_id , a.year as first_year , a.quantity , a.price 
-from sales as a
-where (a.product_id, a.year) IN (
-    SELECT product_id, MIN(year)
-    FROM Sales
-    GROUP BY product_id)
+select product_id, year as first_year, quantity, price
+from (
+    select *, rank() over(partition by product_id order by year asc) as rnk
+    from Sales
+) as a
+where rnk = 1
+
